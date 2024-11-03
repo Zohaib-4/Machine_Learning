@@ -13,3 +13,14 @@ nltk.download('stopwords')
 
 # printing the stopwords in English
 print(stopwords.words('english'))
+
+# loading the dataset to a pandas DataFrame
+news_dataset = pd.read_csv('train.csv')
+
+news_dataset.shape
+
+# print the first 5 rows of the dataframe
+news_dataset.head()
+
+# counting the number of missing values in the dataset
+news_dataset.isnull().sum()
