@@ -39,3 +39,5 @@ Y = news_dataset['label']
 
 print(X)
 print(Y)
+
+port_stem = PorterStemmer()
