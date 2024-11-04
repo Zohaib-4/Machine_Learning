@@ -32,3 +32,10 @@ news_dataset = news_dataset.fillna('')
 news_dataset['content'] = news_dataset['author']+' '+news_dataset['title']
 
 print(news_dataset['content'])
+
+# separating the data & label
+X = news_dataset.drop(columns='label', axis=1)
+Y = news_dataset['label']
+
+print(X)
+print(Y)
