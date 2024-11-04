@@ -24,3 +24,11 @@ news_dataset.head()
 
 # counting the number of missing values in the dataset
 news_dataset.isnull().sum()
+
+# replacing the null values with empty string
+news_dataset = news_dataset.fillna('')
+
+# merging the author name and news title
+news_dataset['content'] = news_dataset['author']+' '+news_dataset['title']
+
+print(news_dataset['content'])
