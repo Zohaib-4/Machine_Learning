@@ -49,3 +49,7 @@ def stemming(content):
     stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords.words('english')]
     stemmed_content = ' '.join(stemmed_content)
     return stemmed_content
+
+news_dataset['content'] = news_dataset['content'].apply(stemming)
+
+print(news_dataset['content'])
