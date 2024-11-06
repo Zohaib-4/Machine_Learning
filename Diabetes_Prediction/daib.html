@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus {
+            border-color: #5d5fe0;
+            outline: none;
+            box-shadow: 0 0 5px rgba(93, 95, 224, 0.4);
+        }
+
+        .btn-submit {
+            background-color: #5d5fe0;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #4a4cc7;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .result span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result.diabetes {
+            background-color: #ffcccb;
+            color: #f44336;
+        }
+
+        .result.no-diabetes {
+            background-color: #c8e6c9;
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form id="diabetesForm">
+            <div class="form-group">
+                <label for="pregnancies">Pregnancies</label>
+                <input type="number" id="pregnancies" name="pregnancies" required>
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose Level</label>
+                <input type="number" id="glucose" name="glucose" required>
+            </div>
+            <div class="form-group">
+                <label for="bloodPressure">Blood Pressure</label>
+                <input type="number" id="bloodPressure" name="bloodPressure" required>
+            </div>
+            <div class="form-group">
+                <label for="skinThickness">Skin Thickness</label>
+                <input type="number" id="skinThickness" name="skinThickness" required>
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin Level</label>
+                <input type="number" id="insulin" name="insulin" required>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="diabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="number" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Diabetes Prediction Function (simplified example)
+        function predictDiabetes(formData) {
+            const { pregnancies, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunction, age } = formData;
+
+            // A basic, simplified rule for diabetes prediction (for demonstration purposes)
+            const result = (glucose >= 120 || bmi >= 30 || insulin >= 200 || age >= 50 || diabetesPedigreeFunction >= 0.5) ? 'diabetes' : 'no-diabetes';
+            return result;
+        }
+
+        // Handle form submission
+        document.getElementById('diabetesForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const formData = {
+                pregnancies: parseInt(document.getElementById('pregnancies').value),
+                glucose: parseInt(document.getElementById('glucose').value),
+                bloodPressure: parseInt(document.getElementById('bloodPressure').value),
+                skinThickness: parseInt(document.getElementById('skinThickness').value),
+                insulin: parseInt(document.getElementById('insulin').value),
+                bmi: parseFloat(document.getElementById('bmi').value),
+                diabetesPedigreeFunction: parseFloat(document.getElementById('diabetesPedigreeFunction').value),
+                age: parseInt(document.getElementById('age').value)
+            };
+
+            // Predict Diabetes
+            const prediction = predictDiabetes(formData);
+
+            // Display result
+            const resultElement = document.getElementById('result');
+            if (prediction === 'diabetes') {
+                resultElement.className = 'result diabetes';
+                resultElement.innerHTML = '<span>You are at risk of diabetes.</span>';
+            } else {
+                resultElement.className = 'result no-diabetes';
+                resultElement.innerHTML = '<span>You are not at risk of diabetes.</span>';
+            }
+
+            // Show result
+            resultElement.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
