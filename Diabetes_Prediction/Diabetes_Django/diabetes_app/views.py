@@ -2,6 +2,8 @@ from rest_framework import viewsets
 from .models import DiabetesPrediction
 from .serializers import DiabetesPredictionSerializer
 from rest_framework.response import Response
+from django.shortcuts import render
+from django.http import HttpResponse
 from rest_framework import status
 
 class DiabetesPredictionViewSet(viewsets.ViewSet):
@@ -17,3 +19,8 @@ class DiabetesPredictionViewSet(viewsets.ViewSet):
             return Response({'prediction': prediction}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+
+    def members(request):
+        return HttpResponse("Hello world!")
