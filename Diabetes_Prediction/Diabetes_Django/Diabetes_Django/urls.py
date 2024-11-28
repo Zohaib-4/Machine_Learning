@@ -1,10 +1,15 @@
 from django.urls import path, include
 from rest_framework import routers
-from . import views
-
-router = routers.DefaultRouter()
-router.register(r'predictions', views.DiabetesPredictionViewSet)
+from diabetes_app import views
 
 urlpatterns = [
-    path('', include(router.urls)),
+    # path('admin/', admin.site.urls),
 ]
+
+
+# router = routers.DefaultRouter()
+# router.register(r'predictions', views.DiabetesPredictionViewSet)
+
+# urlpatterns = [
+#     path('', include(router.urls)),
+# ]

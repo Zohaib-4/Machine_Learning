@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import DiabetesPrediction
+from .models import PatientData
 from .serializers import DiabetesPredictionSerializer
 from rest_framework.response import Response
 from django.shortcuts import render

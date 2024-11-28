@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import DiabetesPrediction
+from .models import PatientData
 
 class DiabetesPredictionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = DiabetesPrediction
+        model = PatientData
         fields = '__all__'
