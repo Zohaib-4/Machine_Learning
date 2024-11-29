@@ -115,9 +115,13 @@
             <button type="submit">Predict</button>
         </form>
 
-        <!-- <div id="result" class="result">
-            
-        </div> -->
+        <div class="result-section">
+            <h2>Prediction Outcome</h2>
+            <p class="result-text" id="resultText">
+                <!-- Backend will inject the result here -->
+                {{ outcome }}
+            </p>
+        </div>
     </div>
 
     <script src="script.js"></script>

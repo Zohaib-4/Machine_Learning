@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from rest_framework import status
+from prediction.daibetes import check_diabetes
 
 def prediction(request):
     # error_message = ""
@@ -18,8 +19,8 @@ def prediction(request):
         diabetes_pedigree_function = request.POST.get('diabetes_pedigree_function')
         age = request.POST.get('age')
         
-        print(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
-
+        inputdata = (pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
+        prediction = check_diabetes(inputdata)
 
         PatientData.objects.create(
             pregnancies=pregnancies,
@@ -29,7 +30,8 @@ def prediction(request):
             insulin=insulin,
             bmi=bmi,
             diabetes_pedigree_function=diabetes_pedigree_function,
-            age=age
+            age=age,
+            outcome=prediction
         )
 
         return redirect('success')

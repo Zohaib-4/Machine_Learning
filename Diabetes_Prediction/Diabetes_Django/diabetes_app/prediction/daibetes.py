@@ -77,11 +77,12 @@ def check_diabetes(input_data):
     prediction = classifier.predict(std_data)
     print(prediction)
 
-    if (prediction == 0):
-        print('The person is not diabetic')
-    else:
-        print('The person is diabetic')
+    return prediction
+    # if (prediction == 0):
+    #     print('The person is not diabetic')
+    # else:
+    #     print('The person is diabetic')
 
 
-input_data = (3,126,88,41,235,39.3,0.704,27)
-check_diabetes(input_data)
+# input_data = (3,126,88,41,235,39.3,0.704,27)
+# check_diabetes(input_data)
