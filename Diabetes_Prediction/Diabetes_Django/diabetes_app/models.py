@@ -9,7 +9,7 @@ class PatientData(models.Model):
     bmi = models.FloatField()
     diabetes_pedigree_function = models.FloatField()
     age = models.PositiveIntegerField()
-    outcome = models.BooleanField()
+    outcome = models.BooleanField(null=True)
 
     def __str__(self):
         return f"Patient {self.id} - Outcome: {'Diabetes' if self.outcome else 'No Diabetes'}"
