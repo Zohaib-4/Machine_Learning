@@ -34,8 +34,8 @@ def prediction(request):
             outcome=prediction
         )
 
-        return redirect('success')
-
+        # return redirect('success')
+        return render(request, "index.html", {"outcome": prediction})
     return render(request, 'index.html')
     # return render(request, 'index.html', {'error_message': error_message})
 

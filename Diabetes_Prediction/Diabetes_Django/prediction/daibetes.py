@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 def diabetes_processing():
 
-    diabetes_dataset = pd.read_csv('diabetes.csv') 
+    diabetes_dataset = pd.read_csv('diabetes_process.csv') 
 
     diabetes_dataset.head()
 
@@ -63,20 +63,21 @@ def diabetes_processing():
 
 def check_diabetes(input_data):
     
-    # changing the input_data to numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
+    # # changing the input_data to numpy array
+    # input_data_as_numpy_array = np.asarray(input_data)
 
-    # reshape the array as we are predicting for one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+    # # reshape the array as we are predicting for one instance
+    # input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
-    scaler, classifier = diabetes_processing()
-    # standardize the input data
-    std_data = scaler.transform(input_data_reshaped)
-    print(std_data)
+    # scaler, classifier = diabetes_processing()
+    # # standardize the input data
+    # std_data = scaler.transform(input_data_reshaped)
+    # print(std_data)
 
-    prediction = classifier.predict(std_data)
-    print(prediction)
+    # prediction = classifier.predict(std_data)
+    # print(prediction)
 
+    prediction = 1
     return prediction
     # if (prediction == 0):
     #     print('The person is not diabetic')
